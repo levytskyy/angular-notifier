@@ -60,7 +60,46 @@ export class NotifierModule {
    * @param   [options={}] - Custom notifier options
    * @returns - Notifier module with custom providers
    */
-  public static withConfig(options: NotifierOptions = {}): ModuleWithProviders<NotifierModule> {
+  public static withConfig(options: NotifierOptions = {
+        position: {
+          horizontal: {
+            position: "right",
+            distance: 12,
+          },
+          vertical: {
+            position: "top",
+            distance: 12,
+            gap: 6,
+          },
+        },
+        theme: "material",
+        behaviour: {
+          autoHide: 196000,
+          onClick: "hide",
+          onMouseover: "pauseAutoHide",
+          showDismissButton: true,
+          stacking: 6,
+        },
+        animations: {
+          enabled: true,
+          show: {
+            preset: "slide",
+            speed: 300,
+            easing: "ease",
+          },
+          hide: {
+            preset: "fade",
+            speed: 300,
+            easing: "ease",
+            offset: 50,
+          },
+          shift: {
+            speed: 300,
+            easing: "ease",
+          },
+          overlap: 150,
+        },
+      }): ModuleWithProviders<NotifierModule> {
     return {
       ngModule: NotifierModule,
       providers: [
